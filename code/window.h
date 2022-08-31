@@ -69,6 +69,8 @@ _default_loop_callback(GLFWwindow* window)
 	glClearColor(0.2f, 0.5f, 0.5f, 1.0f);
 	if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, 1);
+	glfwPollEvents();
+	glfwSwapBuffers(window);
 }
 
 #endif // SIMPLE_WINDOW_IMPLEMENTATION
