@@ -7,8 +7,8 @@
 
 typedef void (*window_func_callback)(GLFWwindow* window);
 
-inline void
-window_create(const u32 window_width, const u32 window_height, const char* window_title, window_func_callback window_creation_cb, window_func_callback window_loop_cb, window_func_callback window_destroy_cb); 
+inline void window_create(const u32 window_width, const u32 window_height, const char* window_title, window_func_callback window_creation_cb, window_func_callback window_loop_cb, window_func_callback window_destroy_cb); 
+inline void _default_loop_callback(GLFWwindow* window);
 
 #if defined(SIMPLE_WINDOW_IMPLEMENTATION)
 
@@ -47,12 +47,28 @@ window_create(const u32 window_width,
     
     //~ WINDOW LOOP
     while(!glfwWindowShouldClose(_window)) {
-        window_loop_cb(_window);
+	    if(window_loop_cb) {
+		window_loop_cb(_window);
+	    } else {
+		_default_loop_callback(_window);
+	    }
     }
     
     //~ WINDOW DESTROY CALLBACK
-    window_destroy_cb(_window);
+    if(window_destroy_cb) {
+    	window_destroy_cb(_window);
+    }
+
     glfwTerminate();
+}
+
+inline void
+_default_loop_callback(GLFWwindow* window)
+{
+	glClear(GL_COLOR_BUFFER_BIT);
+	glClearColor(0.2f, 0.5f, 0.5f, 1.0f);
+	if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, 1);
 }
 
 #endif // SIMPLE_WINDOW_IMPLEMENTATION
