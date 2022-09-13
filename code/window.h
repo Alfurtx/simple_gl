@@ -48,9 +48,9 @@ window_create(const u32 window_width,
     //~ WINDOW LOOP
     while(!glfwWindowShouldClose(_window)) {
 	    if(window_loop_cb) {
-		window_loop_cb(_window);
+		    window_loop_cb(_window);
 	    } else {
-		_default_loop_callback(_window);
+		    _default_loop_callback(_window);
 	    }
     }
     
