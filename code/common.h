@@ -27,7 +27,7 @@ typedef uint64_t uint64;
 typedef float  float32;
 typedef double float64;
 
-typedef bool bool32;
+typedef int bool32;
 
 typedef unsigned int uint;
 
