@@ -1,6 +1,6 @@
 /* date = August 31st 2022 11:31 am */
 
-#ifndef WINDOW_H
+#if !defined(WINDOW_H)
 #define WINDOW_H
 
 #include "common.h"
@@ -12,7 +12,9 @@ inline void _default_loop_callback(GLFWwindow* window);
 
 #if defined(SIMPLE_WINDOW_IMPLEMENTATION)
 
-global_file GLFWwindow* _window;
+global GLFWwindow* _window;
+
+internal void test(void) {  }
 
 inline void
 window_create(const u32 window_width,
@@ -67,8 +69,11 @@ _default_loop_callback(GLFWwindow* window)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glClearColor(0.2f, 0.5f, 0.5f, 1.0f);
-	if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+
+	if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, 1);
+    }
+
 	glfwPollEvents();
 	glfwSwapBuffers(window);
 }

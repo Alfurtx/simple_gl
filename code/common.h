@@ -33,7 +33,7 @@ typedef unsigned int uint;
 
 #define internal static
 #define local_persist static
-#define global_file static
+#define global static
 
 #define NDEBUG
 #include <assert.h>
