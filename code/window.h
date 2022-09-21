@@ -70,9 +70,8 @@ _default_loop_callback(GLFWwindow* window)
 	glClear(GL_COLOR_BUFFER_BIT);
 	glClearColor(0.2f, 0.5f, 0.5f, 1.0f);
 
-	if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+	if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, 1);
-    }
 
 	glfwPollEvents();
 	glfwSwapBuffers(window);

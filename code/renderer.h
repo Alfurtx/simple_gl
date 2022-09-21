@@ -46,7 +46,7 @@ struct Shader {
         glGetShaderiv(vert, GL_COMPILE_STATUS, &success);
         if(!success) {
             glGetShaderInfoLog(vert, 512, NULL, infoLog);
-            fprintf(stderr, "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n%s\n", infoLog);
+            fprintf(stderr, "[ERROR][VERTEX SHADER COMPILATION ERROR]\n%s\n", infoLog);
         }
         
         frag = glCreateShader(GL_FRAGMENT_SHADER);
@@ -55,7 +55,7 @@ struct Shader {
         glGetShaderiv(frag, GL_COMPILE_STATUS, &success);
         if(!success) {
             glGetShaderInfoLog(frag, 512, NULL, infoLog);
-            fprintf(stderr, "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n%s\n", infoLog);
+            fprintf(stderr, "[ERROR][FRAGMENT SHADER COMPILATION ERROR]\n%s\n", infoLog);
         }
         
         this->program_handle = glCreateProgram();
@@ -78,7 +78,7 @@ struct Shader {
             glGetShaderiv(geo, GL_COMPILE_STATUS, &success);
             if(!success) {
                 glGetShaderInfoLog(geo, 512, NULL, infoLog);
-                fprintf(stderr, "ERROR::SHADER::GEOMETRY::COMPILATION_FAILED\n%s\n", infoLog);
+                fprintf(stderr, "[ERROR][GEOMETRY SHADER COMPILATION ERROR]\n%s\n", infoLog);
             }
             glAttachShader(this->program_handle, geo);
         }
@@ -87,7 +87,7 @@ struct Shader {
         glGetProgramiv(this->program_handle, GL_LINK_STATUS, &success);
         if(!success) {
             glGetProgramInfoLog(this->program_handle, 512, NULL, infoLog);
-            fprintf(stderr, "ERROR LINKING SHADER PROGRAM\n%s\n", infoLog);
+            fprintf(stderr, "[ERROR][PROGRAM SHADER LINKING ERROR]\n%s\n", infoLog);
         }
         glDeleteShader(vert);
         glDeleteShader(frag);

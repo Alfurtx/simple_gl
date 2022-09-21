@@ -8,7 +8,7 @@ set CURRENT_DIR=%~dp0
 
 REM cl flags
 
-set CLFLAGS=/W3 /Zi /nologo /MD /MP4 /WX /EHsc
+set CLFLAGS=/W4 /Zi /nologo /MD /MP4 /WX /EHsc
 set CLFLAGS=%CLFLAGS% /wd4005 /wd4305 /wd4267
 set CLFLAGS=%CLFLAGS% /I%CURRENT_DIR%\libs /I%CURRENT_DIR%\libs\glfw\include /I%CURRENT_DIR%\libs\glm
 
